@@ -4,13 +4,44 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Odin Tic Tac Toe</title>
   <link rel="stylesheet" href="style.css">
   <script src="./script.js" defer></script>
 </head>
 
 <body>
-
+  <h1>Odin Tic Tac Toe</h1>
+  <button class="new-game-btn">New Game</button>
+  <button class="set-player-name-btn">Set Player Names</button>
+  <dialog>
+    <form method="dialog">
+      <p>Set Player Name:</p>
+      <div>
+        <label for="player1">Player 1:</label>
+        <input type="text" id="input-player1" maxlength="8" value="Player 1" required>
+      </div>
+      <div>
+        <label for="player2">Player 2:</label>
+        <input type="text" id="input-player2" maxlength="8" value="Player 2" required>
+      </div>
+      <button class="modal-set-btn" type="submit">Set</button>
+      <button class="modal-close-btn" type="button">Close</button>
+    </form>
+  </dialog>
+  <p class="player-info">Player Name:</p>
+  <p>Player Turn: <span class="player-turn"></span></p>
+  <div class="board">
+    <div class="box box-1" data-box="1"></div>
+    <div class="box box-2" data-box="2"></div>
+    <div class="box box-3" data-box="3"></div>
+    <div class="box box-4" data-box="4"></div>
+    <div class="box box-5" data-box="5"></div>
+    <div class="box box-6" data-box="6"></div>
+    <div class="box box-7" data-box="7"></div>
+    <div class="box box-8" data-box="8"></div>
+    <div class="box box-9" data-box="9"></div>
+  </div>
+  <p class="result"></p>
 </body>
 
 </html>
