@@ -44,18 +44,23 @@ const ticTacToe = (function gameboard() {
   boardBox.addEventListener("click", (e) => {
     if (!gameEnd) {
       const target = e.target;
-      if (target.classList.contains("box")) {
-        let currentPlayer = "";
-        turn++;
-        if (turn % 2 === 1) {
-          currentPlayer = player1;
-          spanPlayerTurn.textContent = player2;
-        } else {
-          currentPlayer = player2;
-          spanPlayerTurn.textContent = player1;
+      if (target.textContent !== "") {
+        paraResult.textContent = "Already selected, choose another one";
+      } else {
+        if (target.classList.contains("box")) {
+          let currentPlayer = "";
+          turn++;
+          paraResult.textContent = "";
+          if (turn % 2 === 1) {
+            currentPlayer = player1;
+            spanPlayerTurn.textContent = player2;
+          } else {
+            currentPlayer = player2;
+            spanPlayerTurn.textContent = player1;
+          }
+          target.textContent = currentPlayer;
+          playerMove(currentPlayer, target.dataset.box);
         }
-        target.textContent = currentPlayer;
-        playerMove(currentPlayer, target.dataset.box);
       }
     }
   });
@@ -84,6 +89,8 @@ const ticTacToe = (function gameboard() {
       box.textContent = "";
     }
   };
+
+  newGame();
 
   const playerMove = (player, move) => {
     board.splice(move - 1, 1, player);
@@ -128,9 +135,9 @@ const ticTacToe = (function gameboard() {
       gameEnd = true;
       paraResult.textContent = `${currentPlayer} wins`;
     }
+    if (turn === 9) {
+      gameEnd = true;
+      paraResult.textContent = "Draws";
+    }
   };
-
-  return { newGame };
 })();
-
-ticTacToe.newGame();
